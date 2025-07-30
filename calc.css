@@ -1,0 +1,11 @@
+#outer{
+    background-color: black;
+    width: 500px;
+    height: 500px;
+}
+
+#screen{
+    width: 500px;
+    height: 100px;
+    background-color: grey;
+}
