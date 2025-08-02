@@ -74,8 +74,8 @@ symbol.forEach(button => {
 
 
 equal.addEventListener("click", function() {
-    result = operate(Number(num1), operator, Number(num2));
-    screen.textContent = result; 
+        result = operate(Number(num1), operator, Number(num2));
+        screen.textContent = result.toFixed(4); 
 });
 
 
@@ -90,3 +90,4 @@ const clearButton = document.getElementById("clear");
     });
 });
 
+//falta hacer que el dot button funcione y hacer que darle = a num1 muestre num1 
