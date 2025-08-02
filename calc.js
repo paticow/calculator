@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let num1 = ""; 
     let num2 = ""; 
     let enteringNum2 = false;
-    let result = operate(Number(num1), operator, Number(num2));
+    let result;
 
 numbers.forEach(button => {
     button.addEventListener("click", function() {
@@ -59,21 +59,25 @@ numbers.forEach(button => {
 });
 
 symbol.forEach(button => {
-    button.addEventListener("click", function() {
-        operator = button.textContent;
-        screen.textContent = operator;
-        enteringNum2 = true; 
-
-        num2 = "";
-        console.log(`operator = ${operator}`);
-    });
+  button.addEventListener("click", function() {
+    if (operator && num2 !== "") {
+      result = operate(Number(num1), operator, Number(num2));
+      num = String(result);
+      screen.textContent = num1
+    }
+    operator = button.textContent;
+    enteringNum2 = true;
+    num2 = "";
+    console.log(`operator = ${operator}`);
+  });
 });
+
 
 equal.addEventListener("click", function() {
     result = operate(Number(num1), operator, Number(num2));
-    num1 = result;
     screen.textContent = result; 
 });
+
 
 
 const clearButton = document.getElementById("clear");
