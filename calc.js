@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let num1 = ""; 
     let num2 = ""; 
     let enteringNum2 = false;
+    let result = operate(Number(num1), operator, Number(num2));
 
 numbers.forEach(button => {
     button.addEventListener("click", function() {
@@ -62,12 +63,15 @@ symbol.forEach(button => {
         operator = button.textContent;
         screen.textContent = operator;
         enteringNum2 = true; 
+
+        num2 = "";
         console.log(`operator = ${operator}`);
     });
 });
 
 equal.addEventListener("click", function() {
-    let result = operate(Number(num1), operator, Number(num2));
+    result = operate(Number(num1), operator, Number(num2));
+    num1 = result;
     screen.textContent = result; 
 });
 
