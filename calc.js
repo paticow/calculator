@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
             screen.textContent = result;
             num1 = String(result);
             num2 = "";
-            enteringNum2 = false;
+            clear();
         }
     });
 
