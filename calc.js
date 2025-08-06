@@ -55,6 +55,11 @@ document.addEventListener('DOMContentLoaded', function() {
             else {
                 num2 += button.textContent;
                 screen.textContent = `${num1} ${operator} ${num2}`;
+                
+                    if (operator == "/" && num2 == 0) {
+                    screen.textContent = "MATH ERROR";
+                    clear();
+                }
 
                 if (operator && num1 !== "" && num2 !== "") {
                     result = operate(Number(num1), operator, Number(num2));
@@ -88,12 +93,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     clearButton.addEventListener("click", function() {
         screen.textContent = ""; 
+        clear();
+    });
+
+    function clear(){
         operator = null; 
         num1 = ""; 
         num2 = ""; 
         enteringNum2 = false;
         result = null;
-    });
+    }
+
 });
 
 
