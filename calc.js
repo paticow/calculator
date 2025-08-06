@@ -11,9 +11,6 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
-    if(num2 = 0){
-        console.log("soy cero")
-    }
     return num1 / num2;
 }
 
@@ -104,20 +101,25 @@ document.addEventListener('DOMContentLoaded', function() {
         result = null;
     }
 
+    dot.addEventListener("click", function() {
+        if (!enteringNum2) {
+            let newNum = num1.toString();
+            num1 = newNum.concat(".");
+        }
+        else{
+            let newNum = num2.toString();
+            num2 = newNum.concat(".");
+        }
+        });
+
 });
+
 
 
 //falta hacer que el dot button funcione y hacer que darle = a num1 muestre num1, tambien lo de los decimales 
 // //number.toFixed(digits);
 
 /*
-dot.addEventListener("click", function() {
-        if (!enteringNum2) {
-            num1 = num1.append(".");
-        }
-        else{
-            num2 = num2.append(".");
-        }
-        });
+
 
 */
