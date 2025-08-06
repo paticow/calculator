@@ -11,6 +11,9 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
+    if(num2 = 0){
+        console.log("soy cero")
+    }
     return num1 / num2;
 }
 
@@ -35,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const symbols = document.querySelectorAll(".opp"); 
     const equal = document.getElementById("equal");
     const clearButton = document.getElementById("clear");
+    const dot =  document.getElementById("dot");
 
     let operator = null; 
     let num1 = ""; 
@@ -47,14 +51,14 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!enteringNum2) {
                 num1 += button.textContent;
                 screen.textContent = num1;
-            } else {
+            } 
+            else {
                 num2 += button.textContent;
                 screen.textContent = `${num1} ${operator} ${num2}`;
 
                 if (operator && num1 !== "" && num2 !== "") {
                     result = operate(Number(num1), operator, Number(num2));
-                    console.log("Auto-solved result:", result);
-                }
+                }                
             }
         });
     });
@@ -71,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
             screen.textContent = `${num1} ${operator}`;
         });
     });
-
+    
     equal.addEventListener("click", function() {
         if (operator && num1 !== "" && num2 !== "") {
             result = operate(Number(num1), operator, Number(num2));
@@ -91,3 +95,19 @@ document.addEventListener('DOMContentLoaded', function() {
         result = null;
     });
 });
+
+
+//falta hacer que el dot button funcione y hacer que darle = a num1 muestre num1, tambien lo de los decimales 
+// //number.toFixed(digits);
+
+/*
+dot.addEventListener("click", function() {
+        if (!enteringNum2) {
+            num1 = num1.append(".");
+        }
+        else{
+            num2 = num2.append(".");
+        }
+        });
+
+*/
