@@ -1,20 +1,16 @@
 function add(num1, num2) {
-    console.log(num1+num2)
     return num1 + num2;
 }
 
 function subtract(num1, num2) {
-    console.log(num1-num2)
     return num1 - num2;
 }
 
 function multiply(num1, num2) {
-    console.log(num1*num2)
     return num1 * num2;
 }
 
 function divide(num1, num2) {
-    console.log(num1/num2)
     return num1 / num2;
 }
 
@@ -33,61 +29,65 @@ function operate(num1, operator, num2) {
     }
 }
 
-
 document.addEventListener('DOMContentLoaded', function() {
     const screen = document.getElementById("screen");
     const numbers = document.querySelectorAll(".num"); 
-    const symbol = document.querySelectorAll(".opp"); 
+    const symbols = document.querySelectorAll(".opp"); 
+    const equal = document.getElementById("equal");
+    const clearButton = document.getElementById("clear");
+
     let operator = null; 
     let num1 = ""; 
     let num2 = ""; 
     let enteringNum2 = false;
-    let result;
+    let result = null;
 
-numbers.forEach(button => {
-    button.addEventListener("click", function() {
-        if (!enteringNum2) {
-            num1 += button.textContent;
-            screen.textContent = num1;
-            console.log(`num1 = ${num1}`);
-        } else {
-            num2 += button.textContent;
-            screen.textContent = num2;
-            console.log(`num2 = ${num2}`);
+    numbers.forEach(button => {
+        button.addEventListener("click", function() {
+            if (!enteringNum2) {
+                num1 += button.textContent;
+                screen.textContent = num1;
+            } else {
+                num2 += button.textContent;
+                screen.textContent = `${num1} ${operator} ${num2}`;
+
+                if (operator && num1 !== "" && num2 !== "") {
+                    result = operate(Number(num1), operator, Number(num2));
+                    console.log("Auto-solved result:", result);
+                }
+            }
+        });
+    });
+
+    symbols.forEach(button => {
+        button.addEventListener("click", function() {
+            if (operator && num2 !== "") {
+                result = operate(Number(num1), operator, Number(num2));
+                num1 = String(result);
+                num2 = "";
+            }
+            operator = button.textContent;
+            enteringNum2 = true;
+            screen.textContent = `${num1} ${operator}`;
+        });
+    });
+
+    equal.addEventListener("click", function() {
+        if (operator && num1 !== "" && num2 !== "") {
+            result = operate(Number(num1), operator, Number(num2));
+            screen.textContent = result;
+            num1 = String(result);
+            num2 = "";
+            enteringNum2 = false;
         }
     });
-});
 
-symbol.forEach(button => {
-  button.addEventListener("click", function() {
-    if (operator && num2 !== "") {
-      result = operate(Number(num1), operator, Number(num2));
-      num = String(result);
-      screen.textContent = num1
-    }
-    operator = button.textContent;
-    enteringNum2 = true;
-    num2 = "";
-    console.log(`operator = ${operator}`);
-  });
-});
-
-
-equal.addEventListener("click", function() {
-        result = operate(Number(num1), operator, Number(num2));
-        screen.textContent = result.toFixed(4); 
-});
-
-
-
-const clearButton = document.getElementById("clear");
     clearButton.addEventListener("click", function() {
         screen.textContent = ""; 
         operator = null; 
         num1 = ""; 
         num2 = ""; 
         enteringNum2 = false;
+        result = null;
     });
 });
-
-//falta hacer que el dot button funcione y hacer que darle = a num1 muestre num1 
