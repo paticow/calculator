@@ -55,8 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
             else {
                 num2 += button.textContent;
                 screen.textContent = `${num1} ${operator} ${num2}`;
-                
-                    if (operator == "/" && num2 == 0) {
+
+                    if (operator == "/" && num2 == 0 || num1 == 0 && operator == "/") {
                     screen.textContent = "MATH ERROR";
                     clear();
                 }
