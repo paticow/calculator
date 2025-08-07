@@ -125,19 +125,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
     backspace.addEventListener("click", function() {
         let len;
-        if (!enteringNum2) {
-            len = num1.length - 1;
-            let back = num1.slice(0, len);
-            num1 = back;
-            screen.textContent = num1;
+        if (enteringNum2) {
+            if (num2 !== "") {
+                len = num2.length - 1;
+                num2 = num2.slice(0, len);
+            }
+            else{
+            operator = "";
+            enteringNum2 = false;
+            }
         }
         else{
-            len = num2.length - 1;
-            let back = num2.slice(0, len);
-            num2 = back;
-            screen.textContent = `${num1} ${operator} ${num2}`;
+            if (num1.length > 0) {
+                len = num1.length - 1;
+                num1 = num1.slice(0, len);
+                screen.textContent = num1;
+            }
         }
+      screen.textContent = enteringNum2 ? `${num1} ${operator} ${num2}` : num1;
 });
 
 });
-
