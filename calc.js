@@ -103,23 +103,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     dot.addEventListener("click", function() {
         if (!enteringNum2) {
-            let newNum = num1.toString();
-            num1 = newNum.concat(".");
+            if (!num1.includes(".")) {
+                if (num1 === "") {
+                    num1 = "0.";
+                } else {
+                    num1 += ".";
+                }
+                screen.textContent = num1;
+            }
+        } else {
+            if (!num2.includes(".")) {
+                if (num2 === "") {
+                    num2 = "0.";
+                } else {
+                    num2 += ".";
+                }
+            }
         }
-        else{
-            let newNum = num2.toString();
-            num2 = newNum.concat(".");
-        }
-        });
+    });
 
 });
-
-
-
-//falta hacer que el dot button funcione y hacer que darle = a num1 muestre num1, tambien lo de los decimales 
-// //number.toFixed(digits);
-
-/*
-
-
-*/
