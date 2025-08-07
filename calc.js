@@ -53,11 +53,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 num2 += button.textContent;
                 screen.textContent = `${num1} ${operator} ${num2}`;
 
-                    if (operator == "/" && num2 == 0 || num1 == 0 && operator == "/") {
+                if (operator == "/" && num2 == 0 || num1 == 0 && operator == "/") {
                     screen.textContent = "MATH ERROR";
                     clear();
                 }
-
                 if (operator && num1 !== "" && num2 !== "") {
                     result = operate(Number(num1), operator, Number(num2));
                 }                
@@ -81,7 +80,8 @@ document.addEventListener('DOMContentLoaded', function() {
     equal.addEventListener("click", function() {
         if (operator && num1 !== "" && num2 !== "") {
             result = operate(Number(num1), operator, Number(num2));
-            screen.textContent = result;
+            let scrResult = Number(result.toFixed(6)); 
+            screen.textContent = scrResult;
             num1 = String(result);
             num2 = "";
             clear();
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
         screen.textContent = ""; 
         clear();
     });
-
+    
     function clear(){
         operator = null; 
         num1 = ""; 
@@ -121,6 +121,5 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-
 });
 
