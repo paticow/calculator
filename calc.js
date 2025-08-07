@@ -101,17 +101,17 @@ document.addEventListener('DOMContentLoaded', function() {
         result = null;
     }
 
-    dot.addEventListener("click", function() {
-        if (!enteringNum2) {
-            if (!num1.includes(".")) {
-                if (num1 === "") {
-                    num1 = "0.";
-                } else {
-                    num1 += ".";
-                }
-                screen.textContent = num1;
+    dot.addEventListener("click", function(){
+        if (!enteringNum2 && !num1.includes(".")) {
+            if (num1 === "") {
+                num1 = "0.";
+            } 
+            else{
+                num1 += ".";
             }
-        } else {
+            screen.textContent = num1;
+        } 
+        else{
             if (!num2.includes(".")) {
                 if (num2 === "") {
                     num2 = "0.";
@@ -123,3 +123,4 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
+
