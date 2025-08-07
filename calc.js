@@ -36,12 +36,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const equal = document.getElementById("equal");
     const clearButton = document.getElementById("clear");
     const dot =  document.getElementById("dot");
+    const backspace = document.getElementById("backspace")
 
     let operator = null; 
     let num1 = ""; 
     let num2 = ""; 
     let enteringNum2 = false;
     let result = null;
+
+    function clear(){
+        operator = null; 
+        num1 = ""; 
+        num2 = ""; 
+        enteringNum2 = false;
+        result = null;
+    }
 
     numbers.forEach(button => {
         button.addEventListener("click", function() {
@@ -93,14 +102,6 @@ document.addEventListener('DOMContentLoaded', function() {
         clear();
     });
     
-    function clear(){
-        operator = null; 
-        num1 = ""; 
-        num2 = ""; 
-        enteringNum2 = false;
-        result = null;
-    }
-
     dot.addEventListener("click", function(){
         if (!enteringNum2 && !num1.includes(".")) {
             if (num1 === "") {
@@ -121,5 +122,22 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+
+    backspace.addEventListener("click", function() {
+        let len;
+        if (!enteringNum2) {
+            len = num1.length - 1;
+            let back = num1.slice(0, len);
+            num1 = back;
+            screen.textContent = num1;
+        }
+        else{
+            len = num2.length - 1;
+            let back = num2.slice(0, len);
+            num2 = back;
+            screen.textContent = `${num1} ${operator} ${num2}`;
+        }
+});
+
 });
 
