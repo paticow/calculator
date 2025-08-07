@@ -21,19 +21,19 @@ body{
 }
 
 h1{
-    font-size: 100px;
-    margin-bottom: 5px;
+    font-size: 70px;
+    margin: 1px;
     color: var(--beige);
 }
 
 #outer{
     background-color: var(--charcoal-mist);
     width: 600px;
-    height: 600px;
+    height: 700px;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 20px;
 }
 
 #screen{
@@ -44,6 +44,7 @@ h1{
     background-color: var(--wave);
     font-size: 60px;
     display: flex;
+    flex-grow: 1;
     align-items: center;
     padding: 20px;
     box-sizing: border-box;
