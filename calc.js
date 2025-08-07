@@ -36,7 +36,29 @@ document.addEventListener('DOMContentLoaded', function() {
     const equal = document.getElementById("equal");
     const clearButton = document.getElementById("clear");
     const dot =  document.getElementById("dot");
-    const backspace = document.getElementById("backspace")
+    const backspace = document.getElementById("backspace");
+
+    const keyMap = {
+        "0": "zero",
+        "1": "one",
+        "2": "two",
+        "3": "three",
+        "4": "four",
+        "5": "five",
+        "6": "six",
+        "7": "seven",
+        "8": "eight",
+        "9": "nine",
+        "+": "plus",
+        "-": "minus",
+        "*": "multiply",
+        "/": "divide",
+        ".": "dot",
+        "=": "equal",
+        "Enter": "equal",
+        "Backspace": "backspace",
+        "c": "clear"
+    };
 
     let operator = null; 
     let num1 = ""; 
@@ -143,6 +165,16 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
       screen.textContent = enteringNum2 ? `${num1} ${operator} ${num2}` : num1;
+});
+
+document.addEventListener("keydown", function(event) {
+  const key = event.key;
+  const buttonId = keyMap[key];
+  if (buttonId) {
+    event.preventDefault();
+    const button = document.getElementById(buttonId);
+    if (button) button.click();
+  }
 });
 
 });
